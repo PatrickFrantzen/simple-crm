@@ -18,7 +18,9 @@
         <td>{{ user.interest }}</td>
         <td>{{ user.liquidation }}</td>
         <td>{{ user.liquidationScore }} %</td>
-        <td>{{ user.reasons[0] }} </td>
+        <div *ngFor="let reason of user.reasons">
+          <td >{{ reason }} </td>
+        </div>
         <td>{{ user.aquisition }}</td>
 
       </tr>

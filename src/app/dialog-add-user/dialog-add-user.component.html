@@ -72,7 +72,7 @@
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Customer interest in cooperation</mat-label>
             <mat-select formControlName="interest" >
-              <mat-option *ngFor="let interest of interestList" [value]="interest">{{interest}}</mat-option>
+              <mat-option *ngFor="let interest of addCustomerService.interestList" [value]="interest">{{interest}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -81,7 +81,7 @@
           <mat-form-field appearance="outline" class="mr-16">
             <mat-label>Liquidation check</mat-label>
             <mat-select formControlName="liquidation" >
-              <mat-option *ngFor="let liquidation of liquidationList" [value]="liquidation">{{liquidation}}</mat-option>
+              <mat-option *ngFor="let liquidation of addCustomerService.liquidationList" [value]="liquidation">{{liquidation}}</mat-option>
             </mat-select>
           </mat-form-field>
 
@@ -96,12 +96,12 @@
             <mat-label>Customer reasons to work together</mat-label>
             <mat-select formControlName="reasons" multiple>
               <mat-select-trigger>
-                {{reasons.value?.[0] || ''}}
-                <span *ngIf="(reasons.value?.length || 0) > 1" class="example-additional-selection">
-                  (+{{(reasons.value?.length || 0) - 1}} {{reasons.value?.length === 2 ? 'other' : 'others'}})
+                {{userForm.get('reasons')!.value?.[0] || ''}}
+                <span *ngIf="(userForm.get('reasons')!.value?.length || 0) > 1" class="example-additional-selection">
+                  (+{{(userForm.get('reasons')!.value?.length || 0) - 1}} {{userForm.get('reasons')!.value?.length === 2 ? 'other' : 'others'}})
                 </span>
               </mat-select-trigger>
-              <mat-option *ngFor="let reason of reasonList" [value]="reason">{{reason}}</mat-option>
+              <mat-option *ngFor="let reason of addCustomerService.reasonList" [value]="reason">{{reason}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -110,7 +110,7 @@
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Reason for aquisition</mat-label>
             <mat-select formControlName="aquisition" >
-              <mat-option *ngFor="let aquisition of aquisitionList" [value]="aquisition">{{aquisition}}</mat-option>
+              <mat-option *ngFor="let aquisition of addCustomerService.aquisitionList" [value]="aquisition">{{aquisition}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

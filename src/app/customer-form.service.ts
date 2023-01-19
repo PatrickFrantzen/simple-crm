@@ -10,7 +10,18 @@ export class CustomerFormService {
   phoneNoPattern = /([+(\d]{1})(([\d+() -.]){5,16})([+(\d]{1})/gm;
   numberPattern = /^(0|[1-9][0-9]*)$/;
   emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-  constructor(private db: AngularFirestore,) { }
+
+  interest = new FormControl('');
+  interestList: string[] = ['very interested', 'interested', 'not interested'];
+  liquidation = new FormControl('');
+  liquidationList: string[] = ['liquid', 'not liquid'];
+  reasons = new FormControl('');
+  reasonList: string[] = ['Customer wants do expand business fields', 'Customer wants to improve business field', 'Customer wants to explore new business fields', 'Exchange of Knowledge'];
+  aquisition = new FormControl('');
+  aquisitionList: string[] = ['Expand own portfolio', 'Reduce of operation cost', 'Raw material second source'];
+  userForm!: FormGroup;
+  constructor(private db: AngularFirestore,) { 
+  }
 
   createFormGroup(value:any) {
     return new FormGroup({

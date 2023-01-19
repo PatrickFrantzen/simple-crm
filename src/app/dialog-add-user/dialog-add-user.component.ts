@@ -18,15 +18,7 @@ export class DialogAddUserComponent implements OnInit{
   loading = false;
   userForm: FormGroup;
   panelOpenState = false;
-  interest = new FormControl('');
-  interestList: string[] = ['very interested', 'interested', 'not interested'];
-  liquidation = new FormControl('');
-  liquidationList: string[] = ['liquid', 'not liquid'];
-  reasons = new FormControl('');
-  reasonList: string[] = ['Customer wants do expand business fields', 'Customer wants to improve business field', 'Customer wants to explore new business fields', 'Exchange of Knowledge'];
-  aquisition = new FormControl('');
-  aquisitionList: string[] = ['Expand own portfolio', 'Reduce of operation cost', 'Raw material second source'];
-
+  
   constructor (public dialogRef: MatDialogRef<DialogAddUserComponent>, private db: AngularFirestore, public addCustomerService: CustomerFormService) {
     this.userForm = addCustomerService.createFormGroup(this.user);
   }
