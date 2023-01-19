@@ -1,0 +1,32 @@
+<mat-card>
+    <table class="user-table">
+      <tr>
+        <th>Name</th>
+        <th>E-Mail</th>
+        <th>City</th>
+        <th>Interest</th>
+        <th>Liquidation</th>
+        <th>Liquidation Score</th>
+        <th>Reason</th>
+        <th>Aquisition</th>
+      </tr>
+  
+      <tr *ngFor="let user of allUsers"  [routerLink]="['/user/' + user.id]">
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.city }}</td>
+        <td>{{ user.interest }}</td>
+        <td>{{ user.liquidation }}</td>
+        <td>{{ user.liquidationScore }} %</td>
+        <td>{{ user.reasons[0] }} </td>
+        <td>{{ user.aquisition }}</td>
+
+      </tr>
+    </table>
+</mat-card>
+
+
+<div class="add-button-container">
+    <button (click)="openDialog()" mat-fab color="primary" matTooltip="Add user">
+      <mat-icon>add</mat-icon>
+    </button>
