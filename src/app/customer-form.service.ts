@@ -27,6 +27,8 @@ export class CustomerFormService {
   aquisition = new FormControl('');
   aquisitionList: string[] = ['Expand own portfolio', 'Reduce of operation cost', 'Raw material second source'];
   userForm!: FormGroup;
+
+  customerColor:string[] = ['#da4141', '#1cf338', '#1cf3ba', '#1ce1f3', '#1c92f3', '#201cf3', '#ba1cf3', '#f31cf3', '#f31c99', '#000000'];
   constructor(private db: AngularFirestore,) {
   }
 
@@ -61,17 +63,17 @@ export class CustomerFormService {
 
   async setCustomer(userForm: any, user: any, dialogRef: any, newCustomer:boolean, userId:string) {
     if (newCustomer) {
-      this.getCustomerData(userForm.value,user);
+      this.getCustomerData(userForm.value, user, newCustomer);
       await this.sendNewCustomerDataToServer(user);
     } else {
-      this.getCustomerData(userForm.value, user);
+      this.getCustomerData(userForm.value, user, newCustomer);
       await this.sendEditCustomerDataToServer(user, userId);
     }
 
     dialogRef.close();
   }
 
-  getCustomerData(userFormValue: any, user: any) {
+  getCustomerData(userFormValue: any, user: any, newCustomer:boolean) {
     user.firstName = userFormValue.firstName;
     user.lastName = userFormValue.lastName;
     user.street = userFormValue.street;
@@ -84,6 +86,10 @@ export class CustomerFormService {
     user.reasons = userFormValue.reasons;
     user.aquisition = userFormValue.aquisition;
     user.status = this.calculateCustomerStatus(userFormValue.interest, userFormValue.liquidation, userFormValue.liquidationScore, userFormValue.reasons, userFormValue.aquisition);
+    if (newCustomer) {
+      user.color = this.customerColor[Math.floor(Math.random() * this.customerColor.length)];
+      console.log(user.color)
+    }
   }
 
   calculateCustomerStatus(interest: string, liquidation: string, score:number, reasons:string[], aquisition:string): any {

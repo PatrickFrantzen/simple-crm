@@ -11,6 +11,7 @@ export class User {
     reasons: string[];
     aquisition: string;
     status: number;
+    color: string;
 
     constructor(obj?: any) {
     this.firstName = obj ? obj.firstName : '';
@@ -25,6 +26,7 @@ export class User {
     this.reasons = obj ? obj.reason : '';
     this.aquisition = obj ? obj.aquisition : '';
     this.status = obj ? obj.status : '';
+    this.color = obj ? obj.color : '';
 }
 
     public toJSON(){
@@ -40,7 +42,8 @@ export class User {
         liquidationScore: this.liquidationScore,
         reasons: this.reasons,
         aquisition: this.aquisition,
-        status: this.status
+        status: this.status,
+        color: this.color
     }
 }
 }

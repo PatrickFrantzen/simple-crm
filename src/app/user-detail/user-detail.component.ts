@@ -1,3 +1,4 @@
+import { ParseFlags } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,7 +16,9 @@ export class UserDetailComponent implements OnInit{
   user$!:Observable<any>;
   user: any = {};
   docRefUser:any;
-  
+  userInitials:string = '';
+  backgroundColor:string = '';
+
   constructor(private route:ActivatedRoute, private db: AngularFirestore,
     public dialog: MatDialog) {
       
@@ -26,13 +29,27 @@ export class UserDetailComponent implements OnInit{
       this.userId = paramMap.get('id')!;
       this.user$ = this.db.collection('users').doc(this.userId).valueChanges();
       this.getUser();
+      
   })
   }
 
   getUser() {
     this.user$.subscribe((user: any) => {
       this.user = user;
+      this.getInitials(this.user);
+      this.setBackgroundColor(this.user);
     })
+  }
+
+  setBackgroundColor(user:any) {
+    this.backgroundColor = user.color;
+    console.log(user.color, this.backgroundColor)
+  }
+
+  getInitials(user: any) {
+    let firstInitial = user.firstName.charAt(0);
+    let secondInitial = user.lastName.charAt(0);
+    this.userInitials = firstInitial + secondInitial;
   }
 
   editUserMenu() {
