@@ -10,6 +10,7 @@ export class User {
     liquidationScore: number;
     reasons: string[];
     aquisition: string;
+    status: number;
 
     constructor(obj?: any) {
     this.firstName = obj ? obj.firstName : '';
@@ -23,6 +24,7 @@ export class User {
     this.liquidationScore = obj ? obj.liquidationScore : '';
     this.reasons = obj ? obj.reason : '';
     this.aquisition = obj ? obj.aquisition : '';
+    this.status = obj ? obj.status : '';
 }
 
     public toJSON(){
@@ -37,7 +39,8 @@ export class User {
         liquidation: this.liquidation,
         liquidationScore: this.liquidationScore,
         reasons: this.reasons,
-        aquisition: this.aquisition
+        aquisition: this.aquisition,
+        status: this.status
     }
 }
 }

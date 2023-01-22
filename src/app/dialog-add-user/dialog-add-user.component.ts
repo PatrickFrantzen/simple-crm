@@ -18,6 +18,7 @@ export class DialogAddUserComponent implements OnInit{
   loading = false;
   userForm: FormGroup;
   panelOpenState = false;
+  id:string = '';
   
   constructor (public dialogRef: MatDialogRef<DialogAddUserComponent>, private db: AngularFirestore, public addCustomerService: CustomerFormService) {
     this.userForm = addCustomerService.createFormGroup(this.user);
@@ -25,16 +26,6 @@ export class DialogAddUserComponent implements OnInit{
 
   ngOnInit(): void {
     
-  }
-
-  saveUser() {
-    this.loading = true; 
-    const userRef = this.db.collection('users');
-    userRef.add(this.user.toJSON())
-    .then(() => {
-      this.loading = false;
-      this.dialogRef.close(DialogAddUserComponent);
-    })
   }
 
   onNoClick(): void {

@@ -1,7 +1,7 @@
 <mat-progress-bar *ngIf="addCustomerService.loading" mode="indeterminate"></mat-progress-bar>
 <h1 mat-dialog-title>Add Customer</h1>
 <div mat-dialog-content>
-  <form [formGroup]="userForm" (ngSubmit)="addCustomerService.saveCustomer(userForm, user, dialogRef)">
+  <form [formGroup]="userForm" (ngSubmit)="addCustomerService.saveCustomer(userForm, user, dialogRef, true, id)">
 
     <mat-accordion>
       <mat-expansion-panel>
@@ -17,43 +17,37 @@
           <mat-form-field class="mr-16" appearance="outline">
             <mat-label>First Name</mat-label>
             <input formControlName="firstName" matInput>
-            <!--<mat-hint>Please enter a name</mat-hint>-->
           </mat-form-field>
-    
+
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
             <input formControlName="lastName" matInput>
-            <!--<mat-hint>Please enter a name</mat-hint>-->
           </mat-form-field>
         </div>
-    
+
         <div>
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>E-Mail</mat-label>
             <input formControlName="email" matInput>
-            <!--<mat-hint>Please enter Street + House No.</mat-hint>-->
           </mat-form-field>
         </div>
-    
+
         <div>
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Street + House No.</mat-label>
             <input formControlName="street" matInput>
-            <!--<mat-hint>Please enter Street + House No.</mat-hint>-->
           </mat-form-field>
         </div>
-    
+
         <div>
           <mat-form-field appearance="outline" class="mr-16">
             <mat-label>Zip Code</mat-label>
             <input formControlName="zipCode" matInput>
-            <!--<mat-hint>Please enter Zip Code</mat-hint>-->
           </mat-form-field>
-    
+
           <mat-form-field appearance="outline">
             <mat-label>City</mat-label>
             <input formControlName="city" matInput>
-            <!--<mat-hint>Please enter City</mat-hint>-->
           </mat-form-field>
         </div>
       </mat-expansion-panel>
@@ -67,12 +61,13 @@
             Information about Customer potential
           </mat-panel-description>
         </mat-expansion-panel-header>
-        
+
         <div>
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Customer interest in cooperation</mat-label>
-            <mat-select formControlName="interest" >
-              <mat-option *ngFor="let interest of addCustomerService.interestList" [value]="interest">{{interest}}</mat-option>
+            <mat-select formControlName="interest">
+              <mat-option *ngFor="let interest of addCustomerService.interestList"
+                [value]="interest">{{interest}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -80,8 +75,9 @@
         <div>
           <mat-form-field appearance="outline" class="mr-16">
             <mat-label>Liquidation check</mat-label>
-            <mat-select formControlName="liquidation" >
-              <mat-option *ngFor="let liquidation of addCustomerService.liquidationList" [value]="liquidation">{{liquidation}}</mat-option>
+            <mat-select formControlName="liquidation">
+              <mat-option *ngFor="let liquidation of addCustomerService.liquidationList"
+                [value]="liquidation">{{liquidation}}</mat-option>
             </mat-select>
           </mat-form-field>
 
@@ -98,7 +94,8 @@
               <mat-select-trigger>
                 {{userForm.get('reasons')!.value?.[0] || ''}}
                 <span *ngIf="(userForm.get('reasons')!.value?.length || 0) > 1" class="example-additional-selection">
-                  (+{{(userForm.get('reasons')!.value?.length || 0) - 1}} {{userForm.get('reasons')!.value?.length === 2 ? 'other' : 'others'}})
+                  (+{{(userForm.get('reasons')!.value?.length || 0) - 1}} {{userForm.get('reasons')!.value?.length === 2
+                  ? 'other' : 'others'}})
                 </span>
               </mat-select-trigger>
               <mat-option *ngFor="let reason of addCustomerService.reasonList" [value]="reason">{{reason}}</mat-option>
@@ -109,26 +106,15 @@
         <div>
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Reason for aquisition</mat-label>
-            <mat-select formControlName="aquisition" >
-              <mat-option *ngFor="let aquisition of addCustomerService.aquisitionList" [value]="aquisition">{{aquisition}}</mat-option>
+            <mat-select formControlName="aquisition">
+              <mat-option *ngFor="let aquisition of addCustomerService.aquisitionList"
+                [value]="aquisition">{{aquisition}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
 
       </mat-expansion-panel>
     </mat-accordion>
-
-
-
-
-
-
-
-
-
-
-
-
     <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">Cancel</button>
       <button type="submit" [disabled]="addCustomerService.loading" mat-button cdkFocusInitial>Save</button>

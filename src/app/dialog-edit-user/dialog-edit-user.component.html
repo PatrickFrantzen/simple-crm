@@ -1,33 +1,123 @@
-
-<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-<h1 mat-dialog-title>Add User</h1>
+<mat-progress-bar *ngIf="editCustomerService.loading" mode="indeterminate"></mat-progress-bar>
+<h1 mat-dialog-title>Edit Customer</h1>
 <div mat-dialog-content>
+  <form [formGroup]="userForm" (ngSubmit)="editCustomerService.saveCustomer(userForm, data.user, dialogRef, false, data.userId)">
 
-    <div>
-        <mat-form-field class="mr-16" appearance="outline">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Customer
+          </mat-panel-title>
+          <mat-panel-description>
+            General information about Customer
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <mat-form-field class="mr-16" appearance="outline">
             <mat-label>First Name</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.firstName" matInput>
-            <!--<mat-hint>Please enter a name</mat-hint>-->
+            <input formControlName="firstName" [value]="data.user.firstName" matInput>
           </mat-form-field>
-    
+
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.lastName" matInput>
-            <!--<mat-hint>Please enter a name</mat-hint>-->
+            <input formControlName="lastName" [value]="data.user.lastName" matInput>
           </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>E-Mail</mat-label>
+            <input formControlName="email" [value]="data.user.email" matInput>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Street + House No.</mat-label>
+            <input formControlName="street" [value]="data.user.street" matInput>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" class="mr-16">
+            <mat-label>Zip Code</mat-label>
+            <input formControlName="zipCode" [value]="data.user.zipCode" matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input formControlName="city" [value]="data.user.city" matInput>
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Further Details
+          </mat-panel-title>
+          <mat-panel-description>
+            Information about Customer potential
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Customer interest in cooperation</mat-label>
+            <mat-select formControlName="interest" [value]="data.user.interest">
+              <mat-option *ngFor="let interest of editCustomerService.interestList"
+                [value]="interest">{{interest}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" class="mr-16">
+            <mat-label>Liquidation check</mat-label>
+            <mat-select formControlName="liquidation" [value]="data.user.liquidation">
+              <mat-option *ngFor="let liquidation of editCustomerService.liquidationList"
+                [value]="liquidation">{{liquidation}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Liquidation Score [%]</mat-label>
+            <input formControlName="liquidationScore" [value]="data.user.liquidationScore" matInput>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Customer reasons to work together</mat-label>
+            <mat-select formControlName="reasons" [value]="data.user.reasons" multiple>
+              <mat-select-trigger>
+                {{userForm.get('reasons')!.value?.[0] || ''}}
+                <span *ngIf="(userForm.get('reasons')!.value?.length || 0) > 1" class="example-additional-selection">
+                  (+{{(userForm.get('reasons')!.value?.length || 0) - 1}} {{userForm.get('reasons')!.value?.length === 2
+                  ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let reason of editCustomerService.reasonList" [value]="reason">{{reason}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Reason for aquisition</mat-label>
+            <mat-select formControlName="aquisition" [value]="data.user.aquisition">
+              <mat-option *ngFor="let aquisition of editCustomerService.aquisitionList"
+                [value]="aquisition">{{aquisition}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button type="submit" [disabled]="editCustomerService.loading" mat-button cdkFocusInitial>Save</button>
     </div>
-
-    <div>
-      <mat-form-field appearance="outline" class="full-width">
-          <mat-label>E-Mail</mat-label>
-          <input [disabled]="loading" [(ngModel)]="user.email" matInput>
-          <!--<mat-hint>Please enter Street + House No.</mat-hint>-->
-        </mat-form-field>
-  </div>
-
-    
-</div>
-<div mat-dialog-actions>
-  <button [disabled]="loading" mat-button (click)="onNoClick()">Cancel</button>
-  <button [disabled]="loading" mat-button cdkFocusInitial (click)="editUser()">Save</button>
+  </form>
 </div>
