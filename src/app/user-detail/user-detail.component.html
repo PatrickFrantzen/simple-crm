@@ -18,12 +18,50 @@
 </mat-card>
 
 <mat-card class="user-detail-content">
-
     <mat-card-header>
         <mat-card-title>Address</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         {{ user.street }} <br>
-        {{ user.zipCode }} {{ user.city }}
+        {{ user.zipCode }} {{ user.city }} <br>
+        {{ user.email }}
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="user-detail-content">
+    <mat-card-header>
+        <mat-card-title>Customer potential</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="customer-potential-details">
+        <div class="detail-group">
+            <div class="detail">
+                <h3>Is Customer interested in working together?</h3>
+                <b>{{ user.interest }}</b>
+            </div>
+    
+            <div class="detail">
+                <h3>Is Customer liquid?</h3>
+                <b>{{ user.liquidation }}</b>
+            </div>
+        </div>
+
+        <div class="detail-group">
+            <div class="detail">
+                <h3>Value of Customer liquidationscore?</h3>
+                <b>{{ user.liquidationScore }} %</b>
+            </div>
+    
+            <div class="detail">
+                <h3>Reasons for us to work with the Customer?</h3>
+                <b>{{ user.aquisition }}</b>
+            </div>
+        </div>
+
+        
+        <div class="detail">
+            <h3>Reasons of the Customer to work with us:</h3>
+            <div class="customer-potential-reasons" *ngFor="let reasons of user.reasons"><b>{{ reasons }}</b></div>
+        </div>
+
     </mat-card-content>
 </mat-card>

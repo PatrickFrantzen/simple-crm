@@ -43,7 +43,6 @@ export class UserDetailComponent implements OnInit{
 
   setBackgroundColor(user:any) {
     this.backgroundColor = user.color;
-    console.log(user.color, this.backgroundColor)
   }
 
   getInitials(user: any) {

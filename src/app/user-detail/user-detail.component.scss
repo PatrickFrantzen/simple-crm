@@ -50,3 +50,27 @@ mat-card-header {
     padding: unset;
 }
 
+.customer-potential-details {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.detail {
+    width: 50%;
+}
+
+.detail-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.customer-potential-reasons {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+h3 {
+    margin-top: 15px;
+}

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { getFirestore } from '@angular/fire/firestore';
+import firebase from 'firebase/compat/app';
+import { initializeApp } from 'firebase/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import * as firebaseui from 'firebaseui';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +13,12 @@ import { getFirestore } from '@angular/fire/firestore';
 })
 export class AppComponent implements OnInit{
   title = 'simple-crm';
-  
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void {
     
-  }
+}
+
 }

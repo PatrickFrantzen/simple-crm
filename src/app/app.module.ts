@@ -31,6 +31,8 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { DialogAddProjectComponent } from './dialog-add-project/dialog-add-project.component';
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import {MatSelectModule} from '@angular/material/select';
     UserDetailComponent,
     DialogEditAddressComponent,
     DialogEditUserComponent,
+    DialogAddProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,11 +61,13 @@ import {MatSelectModule} from '@angular/material/select';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    AngularFirestoreModule,
+    provideAuth(() => getAuth()),
+
     MatProgressBarModule,
     MatCardModule,
     MatMenuModule,
