@@ -33,6 +33,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { DialogAddProjectComponent } from './dialog-add-project/dialog-add-project.component';
+import { DialogEditProjectComponent } from './dialog-edit-project/dialog-edit-project.component';
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { DialogAddProjectComponent } from './dialog-add-project/dialog-add-proje
     DialogEditAddressComponent,
     DialogEditUserComponent,
     DialogAddProjectComponent,
+    DialogEditProjectComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     BrowserModule,

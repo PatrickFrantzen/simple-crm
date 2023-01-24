@@ -2,7 +2,7 @@ export class Project {
     projectName: string;
     status: string;
     customer: string;
-    details: string;
+    details: string[];
 
 
     constructor(obj?: any) {

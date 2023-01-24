@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ProjectFormService {
 projectId:string = '';
 loading = false;
+statusList = ['open', 'just started', 'ongoing', 'last mile', 'done'];
 
 
   constructor(private db: AngularFirestore) { }

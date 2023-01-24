@@ -1,7 +1,7 @@
 <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 <h1 mat-dialog-title>Add Customer</h1>
 <div mat-dialog-content>
-  <form [formGroup]="projectForm" (ngSubmit)="addProjectService.saveProject(projectForm, project, dialogRef, true, id)">
+  <form [formGroup]="projectForm" (ngSubmit)="editProjectService.saveProject(projectForm, data.project, dialogRef, false, data.projectId)">
 
     <mat-accordion>
       <mat-expansion-panel>
@@ -22,7 +22,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Status</mat-label>
             <mat-select formControlName="status">
-              <mat-option *ngFor="let status of addProjectService.statusList" [value]="status"
+              <mat-option *ngFor="let status of editProjectService.statusList" [value]="status"
                 >{{ status }}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -31,8 +31,8 @@
         <div>
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>related Customer</mat-label>
-            <mat-select formControlName="customer">
-              <mat-option *ngFor="let user of allUsers" [value]="user.firstName + ' ' + user.lastName"
+            <mat-select formControlName="customer" >
+              <mat-option *ngFor="let user of data.allUsers" [value]="data.project.customer"
               >{{user.firstName}} {{ user.lastName }}</mat-option>
             </mat-select>
           </mat-form-field>

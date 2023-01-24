@@ -18,7 +18,7 @@ export class UserComponent implements OnInit{
   allUsers:any = [];
 
   constructor(public dialog: MatDialog, private db:AngularFirestore) {
-    this.allUsers$ = db.collection('users').valueChanges({ idField: 'id'});
+    this.allUsers$ = this.db.collection('users').valueChanges({ idField: 'id'});
   }
 
   ngOnInit(): void {

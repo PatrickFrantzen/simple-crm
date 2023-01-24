@@ -1,0 +1,39 @@
+<mat-card class="user-detail-header">
+    <mat-card-content>
+        <button mat-icon-button class="pin-right-upper-corner" [mat-menu-trigger-for]="userMenu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu">
+            <button mat-menu-item (click)="editProjectMenu()">Edit</button>
+        </mat-menu>
+
+        <div class="project-details">
+            <h2>{{ project.projectName }} </h2>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="project-detail-content">
+    <mat-card-header>
+        <mat-card-title>Related Customer</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{ project.customer }}
+    </mat-card-content>
+
+    <mat-card-header>
+        <mat-card-title>Project Status</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{ project.status }}
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="project-detail-content">
+    <mat-card-header>
+        <mat-card-title>Project Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="project-potential-details">
+        {{ project.details }}
+    </mat-card-content>
+</mat-card>

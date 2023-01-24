@@ -11,26 +11,25 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })
-export class UserDetailComponent implements OnInit{
-  userId:string = '';
-  user$!:Observable<any>;
+export class UserDetailComponent implements OnInit {
+  userId: string = '';
+  user$!: Observable<any>;
   user: any = {};
-  docRefUser:any;
-  userInitials:string = '';
-  backgroundColor:string = '';
+  docRefUser: any;
+  userInitials: string = '';
+  backgroundColor: string = '';
 
-  constructor(private route:ActivatedRoute, private db: AngularFirestore,
+  constructor(private route: ActivatedRoute, private db: AngularFirestore,
     public dialog: MatDialog) {
-      
+
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe( paramMap => {
+    this.route.paramMap.subscribe(paramMap => {
       this.userId = paramMap.get('id')!;
-      this.user$ = this.db.collection('users').doc(this.userId).valueChanges();
-      this.getUser();
-      
-  })
+    })
+    this.user$ = this.db.collection('users').doc(this.userId).valueChanges();
+    this.getUser();
   }
 
   getUser() {
@@ -41,7 +40,7 @@ export class UserDetailComponent implements OnInit{
     })
   }
 
-  setBackgroundColor(user:any) {
+  setBackgroundColor(user: any) {
     this.backgroundColor = user.color;
   }
 
