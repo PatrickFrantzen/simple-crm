@@ -1,3 +1,9 @@
+.mat-drawer {
+    @media screen and (max-width:280px) {
+        bottom: unset;
+    }
+}
+
 .mat-drawer-container {
     height: 100vh;
     position: relative;
@@ -10,6 +16,16 @@
 .sidenav {
     width: 300px;
     
+    @media screen and (max-width: 500px) {
+        width: 100%;
+        height: 20%;
+    }
+}
+
+.toolbar-content{
+    @media screen and (max-width: 500px) {
+        display: none;
+    }
 }
 
 .logo-container {
@@ -54,6 +70,18 @@ mat-toolbar, mat-toolbar-row {
     padding-left: 56px;
     padding-right: 56px;
     padding-top: 16px;
+
+    @media screen and (max-width: 500px) {
+        position: absolute;
+        top: 200px;
+        padding-right: 0px;
+    }
+}
+
+::ng-deep .mat-drawer-content {
+    @media screen and (max-width: 500px) {
+        margin-left: unset !important;
+    }
 }
 
 .logo {

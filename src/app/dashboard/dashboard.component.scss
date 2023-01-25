@@ -2,6 +2,12 @@
     position: absolute;
     right: 56px;
     bottom: 56px;
+
+    @media screen and (max-width: 500px) {
+        right: -75px;
+        top: 20px;
+        bottom: unset;
+    }
 }
 
 .project-card {
@@ -18,6 +24,10 @@
     grid-template-rows: repeat(auto-fill, 1fr);
     row-gap: 25px;
     column-gap: 25px;
+
+    @media screen and (max-width: 500px) {
+        grid-template-columns: repeat(1 , 1fr);
+    }
 }
 
 .pin-right-upper-corner {
