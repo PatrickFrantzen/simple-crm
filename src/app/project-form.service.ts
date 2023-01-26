@@ -27,19 +27,21 @@ statusList = ['open', 'just started', 'ongoing', 'last mile', 'done'];
   }
 
   async saveProject(projectForm: { valid: any; }, project: any, dialogRef: any, newProject: boolean, projectId:string) {
-    
     this.loading = true;
     if (projectForm.valid) {
       await this.setCustomer(projectForm, project, dialogRef, newProject, projectId)
+      console.log(projectForm, project)
     }
     this.loading = false;
   }
 
   async setCustomer(projectForm: any, project: any, dialogRef: any, newProject:boolean, projectId:string) {
-    this.getProjectData(projectForm.value, project);
+    
     if (newProject) {
+      this.getProjectData(projectForm.value, project);
       await this.sendNewProjectDataToServer(project);
     } else {
+      this.getProjectData(projectForm.value, project);
       await this.sendEditProjectDataToServer(project, projectId);
     }
     dialogRef.close();

@@ -88,7 +88,6 @@ export class CustomerFormService {
     user.status = this.calculateCustomerStatus(userFormValue.interest, userFormValue.liquidation, userFormValue.liquidationScore, userFormValue.reasons, userFormValue.aquisition);
     if (newCustomer) {
       user.color = this.customerColor[Math.floor(Math.random() * this.customerColor.length)];
-      console.log(user.color)
     }
   }
 
