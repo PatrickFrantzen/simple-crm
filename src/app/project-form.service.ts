@@ -30,7 +30,6 @@ statusList = ['open', 'just started', 'ongoing', 'last mile', 'done'];
     this.loading = true;
     if (projectForm.valid) {
       await this.setCustomer(projectForm, project, dialogRef, newProject, projectId)
-      console.log(projectForm, project)
     }
     this.loading = false;
   }
