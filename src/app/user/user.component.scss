@@ -1,7 +1,19 @@
+.mobile-hide {
+    @media screen and (max-width: 1000px) {
+        display: none;
+    }
+}
+
 .add-button-container {
     position: absolute;
     right: 56px;
     bottom: 56px;
+
+    @media screen and (max-width: 800px) {
+        right: 12px;
+        top: -12px;
+        bottom: unset;
+    }
 }
 
 .user-table {

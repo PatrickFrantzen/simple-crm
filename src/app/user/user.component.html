@@ -3,24 +3,20 @@
       <tr>
         <th>Name</th>
         <th>E-Mail</th>
-        <th>Interest</th>
-        <th>Liquidation</th>
-        <th>Liquidation Score</th>
-        <!--<th>Reason</th>-->
-        <th>Aquisition</th>
+        <th class="mobile-hide">Interest</th>
+        <th class="mobile-hide">Liquidation</th>
+        <th class="mobile-hide">Liquidation Score</th>
+        <th class="mobile-hide">Aquisition</th>
         <th>Status</th>
       </tr>
   
       <tr *ngFor="let user of allUsers"  [routerLink]="['/user/' + user.id]">
         <td>{{ user.firstName }} {{ user.lastName }}</td>
         <td>{{ user.email }}</td>
-        <td>{{ user.interest }}</td>
-        <td>{{ user.liquidation }}</td>
-        <td>{{ user.liquidationScore }} %</td>
-        <!--<div *ngFor="let reason of user.reasons">
-          <td >{{ reason }} </td>
-        </div>-->
-        <td>{{ user.aquisition }}</td>
+        <td class="mobile-hide">{{ user.interest }}</td>
+        <td class="mobile-hide">{{ user.liquidation }}</td>
+        <td class="mobile-hide">{{ user.liquidationScore }} %</td>
+        <td class="mobile-hide">{{ user.aquisition }}</td>
         <td>
           <span class="material-symbols-outlined">
           <mat-icon [ngClass]="{'green': user.status >= 70, 'yellow': user.status < 70 && user.status >= 50, 'red': user.status < 50}">fiber_manual_record</mat-icon>

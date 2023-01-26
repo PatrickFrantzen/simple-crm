@@ -3,9 +3,9 @@
     right: 56px;
     bottom: 56px;
 
-    @media screen and (max-width: 500px) {
-        right: -75px;
-        top: 20px;
+    @media screen and (max-width: 800px) {
+        right: 12px;
+        top: -12px;
         bottom: unset;
     }
 }
@@ -15,6 +15,13 @@
     min-width: 150px;
     width: 300px;
     cursor: pointer;
+
+    @media screen and (max-width: 1000px) {
+        width: 100%;
+      }
+
+
+
 }
 
 .project-container {
@@ -25,7 +32,11 @@
     row-gap: 25px;
     column-gap: 25px;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 1350px) {
+        grid-template-columns: repeat(2 , 1fr);
+    }
+
+    @media screen and (max-width: 1000px) {
         grid-template-columns: repeat(1 , 1fr);
     }
 }

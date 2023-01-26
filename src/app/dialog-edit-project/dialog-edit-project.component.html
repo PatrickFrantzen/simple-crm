@@ -1,5 +1,5 @@
 <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-<h1 mat-dialog-title>Add Customer</h1>
+<h1 mat-dialog-title>Edit Project</h1>
 <div mat-dialog-content>
   <form [formGroup]="projectForm" (ngSubmit)="editProjectService.saveProject(projectForm, data.project, dialogRef, false, data.projectId)">
 
